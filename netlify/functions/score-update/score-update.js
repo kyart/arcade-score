@@ -14,23 +14,20 @@ const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
 // Our standard serverless handler function
 exports.handler = async event => {
 
-    // Insert a row
-    const { data, error } = await supabase
-        .from('notes')
-        .upsert([
-            { student_name: 'Steve',
-                group_id: '1',
-                score: 250
-            },
-            {
-                onConflict: 'student_name'
-            }
-        ]);
+    const data = await supabase.from("scoreboard").upsert(
+        {
+            student_name: this.inputName,
+            score: this.inputScore,
+            group_id: "1"
+        },{
+            onConflict: 'student_name'
+        }
+    );
 
     // Did it work?
-    console.log(data, error);
+    console.log(data);
     return {
-        data: data,
-        error: error,
+        statusCode: 200,
+        data: data
     };
 }
