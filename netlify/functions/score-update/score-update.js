@@ -29,5 +29,8 @@ exports.handler = async event => {
 
     // Did it work?
     console.log(data, error);
-
+    return {
+        data: data,
+        error: error,
+    };
 }
