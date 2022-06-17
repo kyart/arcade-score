@@ -16,8 +16,8 @@ exports.handler = async event => {
 
     const { data, error } = await supabase.from("scoreboard").upsert(
         {
-            student_name: "Steve",
-            score: 250,
+            student_name: event.queryStringParameters.name,
+            score: event.queryStringParameters.score,
             group_id: "1"
         },{
             onConflict: 'student_name'
