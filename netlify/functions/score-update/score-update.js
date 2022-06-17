@@ -14,7 +14,7 @@ const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
 // Our standard serverless handler function
 exports.handler = async event => {
 
-    const data = await supabase.from("scoreboard").upsert(
+    const { data, error } = await supabase.from("scoreboard").upsert(
         {
             student_name: this.inputName,
             score: this.inputScore,
@@ -25,9 +25,11 @@ exports.handler = async event => {
     );
 
     // Did it work?
-    console.log(data);
+    console.log(data, error);
     return {
         statusCode: 200,
         data: data
+        ,
+        error: error
     };
 }
