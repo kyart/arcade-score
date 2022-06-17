@@ -16,8 +16,8 @@ exports.handler = async event => {
 
     const { data, error } = await supabase.from("scoreboard").upsert(
         {
-            student_name: this.inputName,
-            score: this.inputScore,
+            student_name: "Steve",
+            score: 250,
             group_id: "1"
         },{
             onConflict: 'student_name'
