@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "nuxt build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -12,8 +12,8 @@
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "gsap": "^3.10.4",
-    "nuxt": "^2.15.8",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-server-renderer": "^2.6.14"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

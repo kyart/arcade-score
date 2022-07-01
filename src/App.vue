@@ -1,14 +1,6 @@
 <template>
 
   <div id="app">
-<!--
-    <form @submit.prevent="sendMessage">
-
-      <input type="text" v-model="inputName" placeholder="名前" /><br />
-      <input type="text" v-model="inputScore" placeholder="スコア" /><br />
-      <button type="submit">送信</button>
-    </form>
--->
     <transition-group tag="ul"
                       appear
                       @before-enter="beforeEnter"
@@ -74,23 +66,6 @@ export default {
       this.scoreboard = data;
 
     },
-/*
-    subscribeInsertMessage() {
-      supabase
-          .from("scoreboard")
-          .on("INSERT", ({ new: newMessage }) => {
-            this.messages = [newMessage, ...this.messages].slice(
-                0,
-                MAX_MESSAGE_COUNT
-            );
-          })
-          .subscribe();
-
-      console.log("subscribe insert message")
-
-    },
-
- */
     subscribeUpdateMessage() {
       console.log("subscribe update message")
       supabase
@@ -137,7 +112,8 @@ export default {
 
       gsap.fromTo(".list-item",
           {y: 10},
-          {y: 1, stagger: 0.1});
+          {y: 2, stagger: 0.2});
+
 
       console.log(newValue)
     }
